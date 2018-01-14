@@ -38,9 +38,7 @@ switch ($method) {
     if($action == "login"){
        $name = $input['name'];
        $password = $input['password'];
-       $sql = "select * from `$table` WHERE name=$name AND password=$password";
-       print_r($sql);
-       exit;
+       $sql = "select * from `$table` WHERE name=`$name` AND password=`$password`";
        break;
 
     }else{
