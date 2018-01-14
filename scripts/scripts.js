@@ -76,8 +76,11 @@ angular.module("yapp", ["ui.router", "ngAnimate"]).config(["$stateProvider", "$u
     });
     r.$state = t
 
-    r.changeStatus = function(n,i){
+    r.changeStatus = function(n,report){
        report.status = n;
+        $http.put("http://104.236.69.230/server.php/desculpas/"+report.id,{status: n}).then(function(res){
+            console.log(res);
+        });
     }
 
 }]);
