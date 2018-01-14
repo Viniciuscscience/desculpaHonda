@@ -29,6 +29,7 @@ angular.module("yapp", ["ui.router", "ngAnimate"]).config(["$stateProvider", "$u
         password:"",
         name:"",
         type:1,
+        action: "login"
     }
     r.registered = false;
     r.register = false;
@@ -49,7 +50,7 @@ angular.module("yapp", ["ui.router", "ngAnimate"]).config(["$stateProvider", "$u
 
 
     r.submit = function() {
-        h.post("http://104.236.69.230/server.php/users?action=login",r.log).then(function(res){
+        h.post("http://104.236.69.230/server.php/users",r.log).then(function(res){
             console.log(res);
         },function(lala){
             console.log(lala);
