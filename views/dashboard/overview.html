@@ -14,7 +14,7 @@
 </div>
 
 
-<div ng-if="user.type==1"> <a ui-sref=reports class="pull-right btn btn-primary btn-outline btn-rounded">Criar Desculpa</a>
+<div ng-if="user.type==1"> <a ng-click="setDoApo()" class="pull-right btn btn-primary btn-outline btn-rounded">Criar Desculpa</a>
     <h2>Olá {{user.name}}
         <small ng-show="allMyReports.length == 1"> Você possui {{allMyReports.length}} desculpa em aberto.</small>
         <small ng-show="allMyReports.length != 1"> Você possui {{allMyReports.length}} desculpas em aberto.</small>
@@ -22,14 +22,15 @@
 
 
 
-    <div class="jumbotron" style="background-color: #3ca2e0;">
+    <div ng-show="doApo" class="jumbotron" style="background-color: #3ca2e0;">
         <div class=container>
             <form role=form ng-submit=submit()>
                 <div class=form-content>
                     <div class=form-group> <input ng-model="apo.title" type=text class="form-control input-underline input-lg" placeholder=Título> </div>
                     <div class=form-group> <input ng-model="apo.text" type=text class="form-control input-underline input-lg" placeholder=Desculpa> </div>
                 </div>
-                <button type="submit" ng-show="register" class="btn btn-white btn-outline btn-lg btn-rounded">Enviar</button>
+                <div ng-click="setDoApo()" class="btn btn-white btn-outline btn-lg btn-rounded">Cancelar</div>
+                <button type="submit"  class="btn btn-white btn-outline btn-lg btn-rounded">Enviar</button>
             </form>
         </div>
     </div>

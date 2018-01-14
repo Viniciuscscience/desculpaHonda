@@ -64,6 +64,7 @@ angular.module("yapp", ["ui.router", "ngAnimate"]).config(["$stateProvider", "$u
     }
 }]), angular.module("yapp").controller("DashboardCtrl", ["$scope", "$state", "$http", "$rootScope", function(r, t, $http,$rootScope) {
 
+    r.doApo = false;
     r.apo = {
         title:"",
         text:"",
@@ -93,10 +94,14 @@ angular.module("yapp", ["ui.router", "ngAnimate"]).config(["$stateProvider", "$u
     }
 
 
+    r.setDoApo = function(){
+        r.doApo = !r.doApo;
+    }
     r.submit = function(){
         $http.post("http://104.236.69.230/server.php/desculpas",r.apo).then(function(res){
             console.log(res);
         });
+        r.doApo = false;
     }
     r.$state = t
 }]);
