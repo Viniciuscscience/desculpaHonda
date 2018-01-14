@@ -36,7 +36,7 @@ angular.module("yapp", ["ui.router", "ngAnimate"]).config(["$stateProvider", "$u
         r.register = !r.register;
     }
     r.doRegister = function(){
-        h.post("http://104.236.69.230/api_server.php/users",r.log).then(function(res){
+        h.post("http://104.236.69.230/server.php/users",r.log).then(function(res){
             r.registered = true;
             return t.path("/dashboard"), !1
             console.log(res);
