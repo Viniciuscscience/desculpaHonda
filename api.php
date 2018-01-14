@@ -38,7 +38,7 @@ switch ($method) {
     if($action == "login"){
        $name = $input['name'];
        $password = $input['password'];
-       $sql = "select * from `$table` WHERE name='$name' AND password='$password'";
+       $sql = "select name,id,email from `$table` WHERE name='$name' AND password='$password'";
        break;
 
     }else{
@@ -51,7 +51,7 @@ switch ($method) {
 // excecute SQL statement
 
 $result = mysqli_query($link,$sql);
-   print_r($result);
+
 // die if SQL statement failed
 if (!$result) {
   http_response_code(404);
@@ -66,7 +66,13 @@ if ($method == 'GET') {
   }
   if (!$key) echo ']';
 } elseif ($method == 'POST') {
+  if($action == "login"){
+     for ($i=0;$i<mysqli_num_rows($result);$i++) {
+        echo ($i>0?',':'').json_encode(mysqli_fetch_object($result));
+     }
+  }else{
   echo mysqli_insert_id($link);
+
 } else {
   echo mysqli_affected_rows($link);
 }
