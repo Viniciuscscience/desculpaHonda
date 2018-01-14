@@ -113,5 +113,9 @@ angular.module("yapp", ["ui.router", "ngAnimate"]).config(["$stateProvider", "$u
         });
         r.doApo = false;
     }
+
+    r.setStatusFilter = function(n){
+        r.statusFilter = n;
+    }
     r.$state = t
 }]);

@@ -3,7 +3,7 @@
         <small ng-show="allMyReports.length == 1"> Você possui {{allMyReports.length}} desculpa em aberto.</small>
         <small ng-show="allMyReports.length != 1"> Você possui {{allMyReports.length}} desculpas em aberto.</small>
     </h2>
-    <div ng-repeat="report in allMyReports"  ng-show="report.status == 1" class=jumbotron>
+    <div ng-repeat="report in allMyReports"  ng-show="report.status == statusFilter" class=jumbotron>
         <div class=container>
             <h3>{{report.student}} - {{report.title}}</h3> {{report.text}}<br><br>
             <p> <a ng-click="changeStatus(2, report)" class="btn btn-primary btn-lg btn-outline btn-rounded">Aceitar</a>
@@ -37,7 +37,7 @@
     </div>
 
 
-    <div ng-repeat="report in allMyReports"  ng-show="report.status == 1" class=jumbotron>
+    <div ng-repeat="report in allMyReports"  ng-show="report.status == statusFilter" class=jumbotron>
         <div class=container>
             <h3>{{report.student}} - {{report.title}}</h3> {{report.text}}<br><br>
         </div>
