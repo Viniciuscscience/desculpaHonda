@@ -23,7 +23,7 @@ angular.module("yapp", ["ui.router", "ngAnimate"]).config(["$stateProvider", "$u
         parent: "dashboard",
         templateUrl: "views/dashboard/reports.html"
     })
-}]), angular.module("yapp").controller("LoginCtrl", ["$scope", "$location","$http", function(r, t, h) {
+}]), angular.module("yapp").controller("LoginCtrl", ["$scope", "$location","$http", "$rootScope", function(r, t, h, $rootScope) {
     r.log = {
         email:"",
         password:"",
