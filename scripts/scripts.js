@@ -23,7 +23,19 @@ angular.module("yapp", ["ui.router", "ngAnimate"]).config(["$stateProvider", "$u
         parent: "dashboard",
         templateUrl: "views/dashboard/reports.html"
     })
-}]), angular.module("yapp").controller("LoginCtrl", ["$scope", "$location", function(r, t) {
+}]), angular.module("yapp").controller("LoginCtrl", ["$scope", "$location","$http", function(r, t, h) {
+    r.log = {
+        email:"",
+        password:"",
+        reg:""
+    }
+
+    r.doRegister = function(){
+        h.post("http://104.236.69.230/users",r.log).then(function(res){
+            console.log(res);
+        });
+    }
+
     r.submit = function() {
         return t.path("/dashboard"), !1
     }
