@@ -5,9 +5,7 @@ $request = explode('/', trim($_SERVER['PATH_INFO'],'/'));
 $input = json_decode(file_get_contents('php://input'),true);
 $action = $input['action'];
 unset($input['action']);
-print_r($input);
-print_r($action);
-exit;
+
 // connect to the mysql database
 $link = mysqli_connect('localhost', 'desculpahonda', 'desculpahonda', 'desculpahonda');
 mysqli_set_charset($link,'utf8');
@@ -40,7 +38,7 @@ switch ($method) {
     if($action == "login"){
        $name = $input['name'];
        $password = $input['password'];
-       $sql = "select * from `$table` WHERE name=$name AND password==$password";
+       $sql = "select * from `$table` WHERE name=$name AND password=$password";
 
     }else{
         $sql = "insert into `$table` set $set"; break;
