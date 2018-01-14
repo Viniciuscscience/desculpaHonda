@@ -65,7 +65,7 @@ angular.module("yapp", ["ui.router", "ngAnimate"]).config(["$stateProvider", "$u
 }]), angular.module("yapp").controller("DashboardCtrl", ["$scope", "$state", "$http", "$rootScope", function(r, t, $http,$rootScope) {
 
     $http.get("http://104.236.69.230/server.php/desculpas/"+$rootScope.user.id).then(function(res){
-        $scope.allMyReports = res.data;
+        r.allMyReports = res.data;
     });
     r.$state = t
 
