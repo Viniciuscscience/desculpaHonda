@@ -66,6 +66,13 @@ angular.module("yapp", ["ui.router", "ngAnimate"]).config(["$stateProvider", "$u
 
     $http.get("http://104.236.69.230/server.php/desculpas/"+$rootScope.user.id).then(function(res){
         r.allMyReports = res.data;
+        r.allMyReports.forEach(function(p,ind){
+            if(p.status == 1){
+                $http.get("http://104.236.69.230/server.php/users/"+p.student).then(function(resS){
+                    p.student = resS.name;
+                });
+            }
+        });
     });
     r.$state = t
 
