@@ -27,8 +27,8 @@ angular.module("yapp", ["ui.router", "ngAnimate"]).config(["$stateProvider", "$u
     r.log = {
         email:"",
         password:"",
-        reg:"",
-        type:1
+        name:"",
+        type:1,
     }
     r.registered = false;
     r.register = false;
