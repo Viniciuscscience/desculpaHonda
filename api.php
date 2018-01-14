@@ -38,7 +38,7 @@ switch ($method) {
     if($action == "login"){
        $name = $input['name'];
        $password = $input['password'];
-       $sql = "select 'name','id','email' from `$table` WHERE name='$name' AND password='$password'";
+       $sql = "select name,id,email from `$table` WHERE name='$name' AND password='$password'";
        break;
 
     }else{
@@ -59,20 +59,14 @@ if (!$result) {
 }
 
 // print results, insert id or affected row count
-if ($method == 'GET') {
+if ($method == 'GET' || $action == "login") {
   if (!$key) echo '[';
   for ($i=0;$i<mysqli_num_rows($result);$i++) {
     echo ($i>0?',':'').json_encode(mysqli_fetch_object($result));
   }
   if (!$key) echo ']';
 } elseif ($method == 'POST') {
-  if($action == "login"){
-     for ($i=0;$i<mysqli_num_rows($result);$i++) {
-        echo ($i>0?',':'').json_encode(mysqli_fetch_object($result));
-     }
-  }else{
   echo mysqli_insert_id($link);
-
 } else {
   echo mysqli_affected_rows($link);
 }
