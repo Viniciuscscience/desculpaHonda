@@ -1,4 +1,4 @@
-<div ng-if="user.type==2"> <a ui-sref=reports class="pull-right btn btn-primary btn-outline btn-rounded">Aceitar Todas</a>
+<div ng-if="user.type==2"> <a ui-sref=reports class="pull-right btn btn-primary btn-outline btn-rounded">Aceitar Todos</a>
     <h2>Olá {{user.name}}
         <small ng-show="allMyReports.length == 1"> Você possui {{allMyReports.length}} desculpa em aberto.</small>
         <small ng-show="allMyReports.length != 1"> Você possui {{allMyReports.length}} desculpas em aberto.</small>
@@ -22,7 +22,7 @@
 
 
 
-    <div class=jumbotron>
+    <div class=jumbotron style="background-color: #3ca2e0;">
         <div class=container>
             <form role=form ng-submit=submit()>
                 <div class=form-content>
