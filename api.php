@@ -44,7 +44,6 @@ switch ($method) {
        $password = $input['password'];
        $sql = "select name,id,email,type from `$table` WHERE name='$name' AND password='$password'";
        break;
-
     }else{
         $sql = "insert into `$table` set $set"; break;
     }
