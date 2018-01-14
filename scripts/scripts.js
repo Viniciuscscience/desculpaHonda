@@ -64,6 +64,13 @@ angular.module("yapp", ["ui.router", "ngAnimate"]).config(["$stateProvider", "$u
     }
 }]), angular.module("yapp").controller("DashboardCtrl", ["$scope", "$state", "$http", "$rootScope", function(r, t, $http,$rootScope) {
 
+    r.apo = {
+        title:"",
+        text:"",
+        student:$rootScope.user.id,
+        professor:5,
+        status:1
+    }
     $http.get("http://104.236.69.230/server.php/desculpas/"+$rootScope.user.id).then(function(res){
         r.allMyReports = res.data;
         r.allMyReports.forEach(function(p,ind){
@@ -85,5 +92,11 @@ angular.module("yapp", ["ui.router", "ngAnimate"]).config(["$stateProvider", "$u
         });
     }
 
+
+    r.submit = function(){
+        $http.post("http://104.236.69.230/server.php/desculpas",r.apo).then(function(res){
+            console.log(res);
+        });
+    }
     r.$state = t
 }]);
