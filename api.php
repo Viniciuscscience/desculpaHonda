@@ -49,6 +49,8 @@ switch ($method) {
 }
 
 // excecute SQL statement
+ print_r($sql);
+ exit;
 $result = mysqli_query($link,$sql);
    print_r($result);
 // die if SQL statement failed
