@@ -6,8 +6,8 @@
     <div ng-repeat="report in allMyReports"  ng-show="report.status == 1" class=jumbotron>
         <div class=container>
             <h3>{{report.student}} - {{report.title}}</h3> {{report.text}}<br><br>
-            <p> <a n-click="changeStatus(2, report)" class="btn btn-primary btn-lg btn-outline btn-rounded">Aceitar</a>
-                <a n-click="changeStatus(3, report)" class="btn btn-primary btn-lg btn-outline btn-rounded">Recusar</a>
+            <p> <a ng-click="changeStatus(2, report)" class="btn btn-primary btn-lg btn-outline btn-rounded">Aceitar</a>
+                <a ng-click="changeStatus(3, report)" class="btn btn-primary btn-lg btn-outline btn-rounded">Recusar</a>
             </p>
         </div>
     </div>
