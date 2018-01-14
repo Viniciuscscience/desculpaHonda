@@ -6,6 +6,7 @@ $input = json_decode(file_get_contents('php://input'),true);
 $action = $input['action'];
 unset($input['action']);
 
+
 // connect to the mysql database
 $link = mysqli_connect('localhost', 'desculpahonda', 'desculpahonda', 'desculpahonda');
 mysqli_set_charset($link,'utf8');
