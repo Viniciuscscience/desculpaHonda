@@ -33,14 +33,19 @@ switch ($method) {
   case 'PUT':
     $sql = "update `$table` set $set where id=$key"; break;
   case 'POST':
-    $sql = "insert into `$table` set $set"; break;
+    if($input['action'] == "login"){
+       $sql = "select * from `$table` WHERE name=$name AND password==$password";
+
+    }else{
+        $sql = "insert into `$table` set $set"; break;
+    }
   case 'DELETE':
     $sql = "delete `$table` where id=$key"; break;
 }
 
 // excecute SQL statement
 $result = mysqli_query($link,$sql);
-
+   print_r($result);
 // die if SQL statement failed
 if (!$result) {
   http_response_code(404);

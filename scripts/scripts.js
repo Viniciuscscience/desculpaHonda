@@ -49,7 +49,7 @@ angular.module("yapp", ["ui.router", "ngAnimate"]).config(["$stateProvider", "$u
 
 
     r.submit = function() {
-        h.get("http://104.236.69.230/server.php/users").then(function(res){
+        h.post("http://104.236.69.230/server.php/users?action=login",r.log).then(function(res){
             console.log(res);
         },function(lala){
             console.log(lala);
