@@ -5,8 +5,8 @@
     </h2>
     <div ng-repeat="report in allMyReports" class=jumbotron>
         <div class=container>
-            <h1>Olá!</h1> Este portal é uma alternativa de local para organizar todas as desculpas de faltas, trabalhos não feitos ou atrasados e pedidos de reconsideração dos alunos!<br><br>
-            <p> <a class="btn btn-primary btn-lg btn-outline btn-rounded">Learn more</a> </p>
+            <h1>{{report.title}}</h1> {{report.text}}<br><br>
+            <p> <a class="btn btn-primary btn-lg btn-outline btn-rounded">{{report.student}}</a> </p>
         </div>
     </div>
 </div>
