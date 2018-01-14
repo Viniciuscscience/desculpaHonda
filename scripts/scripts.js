@@ -77,7 +77,7 @@ angular.module("yapp", ["ui.router", "ngAnimate"]).config(["$stateProvider", "$u
     r.$state = t
 
     r.changeStatus = function(n,i){
-        r.allMyReports[i].status = n;
+       report.status = n;
     }
 
 }]);
