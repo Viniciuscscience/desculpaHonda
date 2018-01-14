@@ -38,7 +38,7 @@ switch ($method) {
     if($action == "login"){
        $name = $input['name'];
        $password = $input['password'];
-       $sql = "select * from `$table` WHERE name=`$name` AND password=`$password`";
+       $sql = "select * from `$table` WHERE name='$name' AND password='$password'";
        break;
 
     }else{
@@ -49,8 +49,7 @@ switch ($method) {
 }
 
 // excecute SQL statement
- print_r($sql);
- exit;
+
 $result = mysqli_query($link,$sql);
    print_r($result);
 // die if SQL statement failed
