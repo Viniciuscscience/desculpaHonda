@@ -49,7 +49,12 @@ angular.module("yapp", ["ui.router", "ngAnimate"]).config(["$stateProvider", "$u
 
 
     r.submit = function() {
-        return t.path("/dashboard"), !1
+        h.get("http://104.236.69.230/server.php/users").then(function(res){
+            console.log(res);
+        },function(lala){
+            console.log(lala);
+        });
+        //return t.path("/dashboard"), !1
     }
 }]), angular.module("yapp").controller("DashboardCtrl", ["$scope", "$state", function(r, t) {
     r.$state = t
