@@ -51,11 +51,14 @@ angular.module("yapp", ["ui.router", "ngAnimate"]).config(["$stateProvider", "$u
 
     r.submit = function() {
         h.post("http://104.236.69.230/server.php/users",r.log).then(function(res){
-            console.log(res);
+            if(res.data.length > 0){
+                $rootScope.user = res.data[0];
+                return t.path("/dashboard"), !1
+            }
         },function(lala){
-            console.log(lala);
+            alert("Login Incorreto");
         });
-        //return t.path("/dashboard"), !1
+
     }
 }]), angular.module("yapp").controller("DashboardCtrl", ["$scope", "$state", function(r, t) {
     r.$state = t
