@@ -54,12 +54,19 @@ angular.module("yapp", ["ui.router", "ngAnimate"]).config(["$stateProvider", "$u
             if(res.data.length > 0){
                 $rootScope.user = res.data[0];
                 return t.path("/dashboard"), !1
+            }else{
+                alert("Login Incorreto");
             }
         },function(lala){
             alert("Login Incorreto");
         });
 
     }
-}]), angular.module("yapp").controller("DashboardCtrl", ["$scope", "$state", function(r, t) {
+}]), angular.module("yapp").controller("DashboardCtrl", ["$scope", "$state", "$http", "$rootScope", function(r, t, $http,$rootScope) {
+
+    $http.get("http://104.236.69.230/server.php/desculpas/"+$rootScope.user.id).then(function(res){
+        $scope.allMyReports = res.data;
+    });
     r.$state = t
+
 }]);
