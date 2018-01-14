@@ -33,7 +33,7 @@ switch ($method) {
   case 'PUT':
     $sql = "update `$table` set $set where id=$key"; break;
   case 'POST':
-
+    print_r($input);
     if($input['action'] == "login"){
        $sql = "select * from `$table` WHERE name=$name AND password==$password";
 
