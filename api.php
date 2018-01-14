@@ -31,7 +31,11 @@ for ($i=0;$i<count($columns);$i++) {
 // create SQL based on HTTP method
 switch ($method) {
   case 'GET':
+   if($table == "desculpas"){
+    $sql = "select * from `$table`".($key?" WHERE professor=$key || student=$key ":''); break;
+   }else{
     $sql = "select * from `$table`".($key?" WHERE id=$key":''); break;
+    }
   case 'PUT':
     $sql = "update `$table` set $set where id=$key"; break;
   case 'POST':
