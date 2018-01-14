@@ -18,10 +18,6 @@ angular.module("yapp", ["ui.router", "ngAnimate"]).config(["$stateProvider", "$u
         url: "/overview",
         parent: "dashboard",
         templateUrl: "views/dashboard/overview.html"
-    }).state("reports", {
-        url: "/reports",
-        parent: "dashboard",
-        templateUrl: "views/dashboard/reports.html"
     })
 }]), angular.module("yapp").controller("LoginCtrl", ["$scope", "$location","$http", "$rootScope", function(r, t, h, $rootScope) {
     r.log = {
@@ -113,7 +109,7 @@ angular.module("yapp", ["ui.router", "ngAnimate"]).config(["$stateProvider", "$u
         });
         r.doApo = false;
     }
-
+    r.statusFilter = 1;
     r.setStatusFilter = function(n){
         r.statusFilter = n;
     }
