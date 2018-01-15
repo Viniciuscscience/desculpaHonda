@@ -31,12 +31,14 @@ angular.module("yapp", ["ui.router", "ngAnimate"]).config(["$stateProvider", "$u
     r.register = false;
 
 
-    $rootScope.user = JSON.parse($window.localStorage.user);
-    if($rootScope.user && $rootScope.user.name!= "")   return t.path("/dashboard");
+
     $rootScope.statusFilter = 1;
     $rootScope.setStatusFilter = function(n){
         $rootScope.statusFilter = n;
     }
+
+    $rootScope.user = JSON.parse($window.localStorage.user || '{}');
+    if($rootScope.user && $rootScope.user.name!= "")   return t.path("/dashboard");
 
     r.showRegister = function(){
         r.register = !r.register;
@@ -75,7 +77,8 @@ angular.module("yapp", ["ui.router", "ngAnimate"]).config(["$stateProvider", "$u
 
     }
 }]), angular.module("yapp").controller("DashboardCtrl", ["$scope", "$state", "$http", "$rootScope", function(r, t, $http,$rootScope) {
-    $rootScope.user = JSON.parse($window.localStorage.user);
+    $rootScope.user = JSON.parse($window.localStorage.user || '{}');
+    if(!$rootScope.user || !$rootScope.user.name || $rootScope.user.name == "")   return t.path("/login");
     r.doApo = false;
     r.apo = {
         title:"",
