@@ -38,7 +38,7 @@ angular.module("yapp", ["ui.router", "ngAnimate"]).config(["$stateProvider", "$u
     }
 
     $rootScope.user = JSON.parse($window.localStorage.user || '{}');
-    if($rootScope.user && $rootScope.user.name!= "")   return t.path("/dashboard");
+    if($rootScope.user && $rootScope.user.name && $rootScope.user.name!= "")   return t.path("/dashboard");
 
     r.showRegister = function(){
         r.register = !r.register;
