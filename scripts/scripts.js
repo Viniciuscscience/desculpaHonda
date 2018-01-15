@@ -19,7 +19,7 @@ angular.module("yapp", ["ui.router", "ngAnimate"]).config(["$stateProvider", "$u
         parent: "dashboard",
         templateUrl: "views/dashboard/overview.html"
     })
-}]), angular.module("yapp").controller("LoginCtrl", ["$scope", "$location","$http", "$rootScope", function(r, t, h, $rootScope) {
+}]), angular.module("yapp").controller("LoginCtrl", ["$scope", "$location","$http", "$rootScope", "$localStorage", function(r, t, h, $rootScope,$localStorage) {
     r.log = {
         email:"",
         password:"",
@@ -40,9 +40,15 @@ angular.module("yapp", ["ui.router", "ngAnimate"]).config(["$stateProvider", "$u
     }
     r.doRegister = function(){
         h.post("http://104.236.69.230/server.php/users",r.log).then(function(res){
-            r.registered = true;
-            return t.path("/dashboard"), !1
-            console.log(res);
+            alert("Cadastrado Com Sucesso");
+            r.registered = false;
+            r.log = {
+                email:"",
+                password:"",
+                name:"",
+                type:1,
+                action: "login"
+            }
         },function(){
             console.log("muita treta");
             r.registered = false;
@@ -55,6 +61,7 @@ angular.module("yapp", ["ui.router", "ngAnimate"]).config(["$stateProvider", "$u
         h.post("http://104.236.69.230/server.php/users",r.log).then(function(res){
             if(res.data.length > 0){
                 $rootScope.user = res.data[0];
+                $localStorage.user = JSON.stringify($rootScope.user);
                 return t.path("/dashboard"), !1
             }else{
                 alert("Login Incorreto");
