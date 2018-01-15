@@ -76,7 +76,7 @@ angular.module("yapp", ["ui.router", "ngAnimate"]).config(["$stateProvider", "$u
         });
 
     }
-}]), angular.module("yapp").controller("DashboardCtrl", ["$scope", "$state", "$http", "$rootScope", "$window", function(r, t, $http,$rootScope, $window) {
+}]), angular.module("yapp").controller("DashboardCtrl", ["$scope", "$location", "$http", "$rootScope", "$window", function(r, t, $http,$rootScope, $window) {
     $rootScope.user = JSON.parse($window.localStorage.user || '{}');
     if(!$rootScope.user || !$rootScope.user.name || $rootScope.user.name == "")   return t.path("/login");
     r.doApo = false;
@@ -134,5 +134,4 @@ angular.module("yapp", ["ui.router", "ngAnimate"]).config(["$stateProvider", "$u
         });
         r.doApo = false;
     }
-    r.$state = t
 }]);
