@@ -29,6 +29,12 @@ angular.module("yapp", ["ui.router", "ngAnimate"]).config(["$stateProvider", "$u
     }
     r.registered = false;
     r.register = false;
+
+    $rootScope.statusFilter = 1;
+    $rootScope.setStatusFilter = function(n){
+        $rootScope.statusFilter = n;
+    }
+
     r.showRegister = function(){
         r.register = !r.register;
     }
@@ -68,6 +74,12 @@ angular.module("yapp", ["ui.router", "ngAnimate"]).config(["$stateProvider", "$u
         professor:5,
         status:1
     }
+
+    $rootScope.statusFilter = 1;
+    $rootScope.setStatusFilter = function(n){
+        $rootScope.statusFilter = n;
+    }
+
     $http.get("http://104.236.69.230/server.php/desculpas/"+$rootScope.user.id).then(function(res){
         r.allMyReports = res.data;
         r.allMyReports.forEach(function(p,ind){
@@ -108,10 +120,6 @@ angular.module("yapp", ["ui.router", "ngAnimate"]).config(["$stateProvider", "$u
             });
         });
         r.doApo = false;
-    }
-    $rootScope.statusFilter = 1;
-    $rootScope.setStatusFilter = function(n){
-        $rootScope.statusFilter = n;
     }
     r.$state = t
 }]);
