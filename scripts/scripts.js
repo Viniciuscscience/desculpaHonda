@@ -31,6 +31,11 @@ angular.module("yapp", ["ui.router", "ngAnimate"]).config(["$stateProvider", "$u
     r.register = false;
 
 
+    $rootScope.logout = function(){
+        delete $rootScope.user;
+        delete $window.localStorage.user;
+        return t.path("/login");
+    }
 
     $rootScope.statusFilter = 1;
     $rootScope.setStatusFilter = function(n){
@@ -77,6 +82,12 @@ angular.module("yapp", ["ui.router", "ngAnimate"]).config(["$stateProvider", "$u
 
     }
 }]), angular.module("yapp").controller("DashboardCtrl", ["$scope", "$location", "$http", "$rootScope", "$window", function(r, t, $http,$rootScope, $window) {
+    $rootScope.logout = function(){
+        delete $rootScope.user;
+        delete $window.localStorage.user;
+        return t.path("/login");
+    }
+
     $rootScope.user = JSON.parse($window.localStorage.user || '{}');
     if(!$rootScope.user || !$rootScope.user.name || $rootScope.user.name == "")   return t.path("/login");
     r.doApo = false;
